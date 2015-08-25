@@ -1,0 +1,3 @@
+[submodule "cs382f2015"]
+	path = cs382f2015
+	url = git@bitbucket.org:jwenskovitch/cs382f2015.git
