@@ -25,10 +25,11 @@
     (let [z (:z star)
           y (screen-y (:y star) z)
           x (screen-x (:x star) z)]; in
-        (if (or (< 0 x y z)
-                (> (q/height) y) (> (q/width) x))
-            (update-in star [:z] dec)
-            (create-star) )))
+        (if (or (< x 0) (< y 0) (< z 1)
+                (> y (q/height)) (> x (q/width))
+                )
+            (create-star)
+            (update-in star [:z] dec) )))
 
 
 (defn update-state [state]
