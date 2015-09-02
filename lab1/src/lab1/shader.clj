@@ -2,8 +2,8 @@
     (:require [quil.core :as q]))
 
 (defn create-star []
-    {:x (q/random -500 500)
-     :y (q/random -500 500)
+    {:x (q/random 0 1000)
+     :y (q/random 0 1000)
      :z (q/random 100 1000)})
 
 (defn setup []
@@ -12,8 +12,11 @@
   {:stars (repeatedly 64 #(create-star)) })
 
  (defn screen-pos [n z dim]
-    (let [c (/ dim 2)]; in
-         (* (/ n z) (- 100 c) )))
+    ; let c equal the screen centre in this dimension
+    (let [c (/ 2 dim)]; in
+    ; find the bias to shift the star in this dimension
+         (* (/ n z)
+            (+ 100 c) )))
 
 (defn screen-x [x z]
     (screen-pos x z (q/width)))
@@ -25,11 +28,12 @@
     (let [z (:z star)
           y (screen-y (:y star) z)
           x (screen-x (:x star) z)]; in
-        (if (or (< x 0) (< y 0) (< z 1)
-                (> y (q/height)) (> x (q/width))
-                )
-            (create-star)
-            (update-in star [:z] dec) )))
+        (if ; if the star has left the screen's boundaries
+            (or (< x 0) (< y 0) (< z 1)
+                (> y (q/height)) (> x (q/width)))
+            (create-star) ; replace the out of bounds star with a new one
+            (update-in star [:z] dec) ; otherwise, decrease the z-distance
+            )))
 
 
 (defn update-state [state]
@@ -37,7 +41,9 @@
             #(map update-star %1)))
 
 (defn grey-from-z [z]
-    (- 255 (* z (/ 255.0 1000.0))))
+    ; use z-distance to fade the star
+    ; so that they don't just wink into existance
+    (- 255 (* z (/ 255 900))))
 
 (defn draw-star [x y z]
     (q/set-pixel (screen-x x z)
