@@ -35,10 +35,13 @@
         (update-in state [:stars]
             #(map update-star %1)))
 
+(defn grey-from-z [z]
+    (- 255 (* z (/ 255.0 1000.0))))
+
 (defn draw-star [x y z]
     (q/set-pixel (screen-x x z)
                  (screen-y y z)
-                 (q/color 255)))
+                 (q/color (grey-from-z z))))
 
 (defn draw-state [state]
     ; reset background to black
