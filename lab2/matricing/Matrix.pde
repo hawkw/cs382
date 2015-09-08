@@ -1,9 +1,11 @@
 import java.util.Arrays;
 import java.util.stream.IntStream;
-
+/**
+ * THIS REQUIRES JAVA 8
+ */
 class Matrix {
   // let m = our matrix
-  float[][] m;
+  final float[][] m;
   
   /**
    * Constructs a new matrix with the given dimensions.
@@ -19,24 +21,33 @@ class Matrix {
   
   int cols() { return m[0].length; }
   
+  /**
+   * Test if this matrix is the same size as another matrix.
+   */
   boolean isSameSizeAs (Matrix that) {
     return that.rows() == this.rows() &&
            that.cols() == this.cols();
   }
   
+  /**
+   * Adds this matrix to another matrix.
+   * (assuming they have the same dimensions)
+   */
   Matrix add(Matrix that) {
     assert(this.isSameSizeAs(that));
-    float[][] m_prime = new float[rows()][cols()];
-    // I hate that I have to do it this way; Java would
-    // not permit me to zip the two matrices together & then
-    // map sum over them....
-    for (int i = 0; i <= rows(); i++) {
-      for (int j = 0; j <= cols(); j++) {
-        m_prime[i][j] = this.m[i][j] + that.m[i][j];
-      }
-    }
-    return new Matrix(m_prime); // ugh
-  }
+    return new Matrix(
+      // "Don't be to proud of this functional terror you've 
+      //  constructed. The power to map over a `Stream` is 
+      //  insiginificant next to the power of the `for`s."
+      //     – Not Darth Vader
+      IntStream.range(0, rows())
+               .mapToObj(i -> 
+                  IntStream.range(0, cols())
+                           .mapToObj(j -> this.m[i][j] + that.m[i][j])
+                           .toArray(Float[]::new))
+               .toArray(float[][]::new)
+     );
+   }
   
   String toString() { return m.toString(); }
   
