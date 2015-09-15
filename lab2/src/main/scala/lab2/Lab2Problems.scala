@@ -1,9 +1,13 @@
 package lab2
 
-import me.hawkweisman.math.{ Linear, SequentialAlgebra }
+import me.hawkweisman.math.{ Linear
+                           , SequentialAlgebra
+                           , SurfaceNormals
+                           }
 
 object Lab2Problems
-extends SequentialAlgebra {
+extends SequentialAlgebra
+  with SurfaceNormals {
 
   implicit class PrettyVector[N](v: Vector[N]) {
     lazy val prettyPrint: String
@@ -66,7 +70,7 @@ extends SequentialAlgebra {
     val p2 = Array[Double](0, 1, 0)
     val p3 = Array[Double](0, 0, 1)
 
-    println(s"${p1.prettyPrint}")
+    println(s"The surface normal for the face including ${p1.prettyPrint}, ${p2.prettyPrint} and\n ${p3.prettyPrint} is ${surfaceNormal(p1,p2,p3) prettyPrint}")
   }
 
   def problem8() {
@@ -116,11 +120,14 @@ extends SequentialAlgebra {
     problem1()
     problem2()
     printHeader("Problem 3:")
+    // I did this one manually 'cause I was too lazy to figure out a
+    // general algerizm for expressing a vector in terms of basis vectors
     println("Please see assignment sheet.")
     println("-" * 78)
     problem4()
     problem5()
     problem6()
+    problem7()
     problem8()
     problem10()
   }
