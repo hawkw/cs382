@@ -20,7 +20,7 @@ extends SequentialAlgebra
   }
 
   def printHeader(problem: String)
-    = println(s"$problem " + ("-" * (77 - problem.length)))
+    = println(s"\n$problem " + ("-" * (77 - problem.length)))
 
   def problem1() {
     printHeader("Problem 1:")
@@ -71,6 +71,7 @@ extends SequentialAlgebra
     val p3 = Array[Double](0, 0, 1)
 
     println(s"The surface normal for the face including ${p1.prettyPrint}, ${p2.prettyPrint} and\n ${p3.prettyPrint} is ${surfaceNormal(p1,p2,p3) prettyPrint}")
+    println("-" * 78)
   }
 
   def problem8() {
