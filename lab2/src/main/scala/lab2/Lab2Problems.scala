@@ -58,6 +58,17 @@ extends SequentialAlgebra {
     println("-" * 78)
   }
 
+
+  def problem7() {
+    printHeader("Problem 7:")
+
+    val p1 = Array[Double](1, 0, 0)
+    val p2 = Array[Double](0, 1, 0)
+    val p3 = Array[Double](0, 0, 1)
+
+    println(s"${p1.prettyPrint}")
+  }
+
   def problem8() {
     printHeader("Problem 8:")
     val m = Array[Array[Double]](
@@ -66,6 +77,22 @@ extends SequentialAlgebra {
     )
     val v = Array[Double](3, 2)
     println(s"${m.prettyPrint} x ${v.prettyPrint} = ${(m * v).prettyPrint}")
+    println("-" * 78)
+  }
+
+
+  def problem9() {
+    printHeader("Problem 9:")
+    val m = Array[Array[Double]](
+        Array[Double](3, 5, 2)
+      , Array[Double](2, 1, -4)
+    )
+    val n = Array[Array[Double]](
+        Array[Double](2,6)
+      , Array[Double](4, 3)
+    )
+    println(s"${m.prettyPrint} x ${n.prettyPrint} = ${(m * n).prettyPrint}")
+    println("-" * 78)
   }
 
   def problem10() {
@@ -88,9 +115,13 @@ extends SequentialAlgebra {
   def main(args: Array[String]) {
     problem1()
     problem2()
+    printHeader("Problem 3:")
+    println("Please see assignment sheet.")
+    println("-" * 78)
     problem4()
     problem5()
     problem6()
+    problem8()
     problem10()
   }
 
