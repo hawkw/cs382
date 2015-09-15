@@ -118,6 +118,8 @@ extends SequentialAlgebra
 
 
   def main(args: Array[String]) {
+    println("Hawk Weisman\nCMPSC382 Lab 2\n")
+
     problem1()
     problem2()
     printHeader("Problem 3:")
