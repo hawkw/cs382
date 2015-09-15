@@ -1,9 +1,11 @@
 (ns lab1.core
   (:require [quil.core :as q]
             [quil.middleware :as m]
-            [lab1.shader :as shader]))
+            [lab1.shader :as shader])
+  (:gen-class))
 
 
+(defn -main [& args]
 (q/defsketch lab1
   :title "Space!"
   :size [500 500]
@@ -14,4 +16,4 @@
   :draw shader/draw-state
   :features [:keep-on-top]
   ; This sketch uses functional-mode middleware.
-  :middleware [m/fun-mode])
+  :middleware [m/fun-mode]))
