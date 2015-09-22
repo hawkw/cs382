@@ -1,0 +1,137 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{mathtools}
+\title{CMPSC382: Lab 3 Answers}
+\author{Hawk Weisman}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item Move a 2D rectangle to the right 60 pixels and down 30 pixels. \\
+    \[\begin{bmatrix}
+        1 & 0 & 30 \\
+        0 & 1 & 60 \\
+        0 & 0 & 1
+    \end{bmatrix}\]
+    \item Rotate a 50$\times$42 2D rectangle initially located with a center at $(45, 18)$ by $\frac{3\pi}{4}$ radians and repositioning its center at $(-20, 50)$.
+    \begin{gather*}
+    \begin{bmatrix}
+        1 & 0 & -18\\
+        0 & 1 & -45\\
+        0 & 0 & 1
+    \end{bmatrix}
+    \times
+    \begin{bmatrix}
+        \cos(\frac{3\pi}{4}) & -\sin(\frac{3\pi}{4}) & 0 \\
+        \sin(\frac{3\pi}{4}) & \cos(\frac{3\pi}{4}) & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \times
+    \begin{bmatrix}
+        1 & 0 & -20 \\
+        0 & 1 & 50 \\
+        0 & 0 & 1
+    \end{bmatrix}\\
+    =\frac{1}{2}
+    \begin{bmatrix}
+        -\sqrt{2} & -\sqrt{2} & -6(6 + 5\sqrt{2}) \\
+        \sqrt{2} & -\sqrt{2} & -2(54 + 35\sqrt{2}) \\
+        0 & 0 & 2
+    \end{bmatrix}
+    \end{gather*}
+    \item Scale a 75$\times$30 2D rectangle initially located with a top-left corner at $(10, -6)$ by 0.5 in the $x$-dimension and 1.75 in the $y$-dimension, and repositioning its center at $(17, 21)$.
+    \begin{gather*}
+        c = (10 - \frac{75}{2}, -6 - \frac{30}{2}) = (-27.5, -21)\\
+        \begin{bmatrix}
+            1 & 0 & -27.5 \\
+            0 & 1 & -21   \\
+            0 & 0 & 1
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            0.5 & 0    & 0 \\
+            0   & 1.75 & 0 \\
+            0   & 0    & 1
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            1 & 0 & 17 \\
+            0 & 1 & 21 \\
+            0 & 0 & 1
+        \end{bmatrix}
+        = \begin{bmatrix}
+            17 & 0  & -495 \\
+            0  & 21 & 420 \\ % 420 scale it!
+            0  & 0  & 1
+        \end{bmatrix}
+    \end{gather*}
+    \item Rotate a 3D cube initially located with a centre at $(5, 15, 10)$ by $\frac{\pi}{4}$ radians in the $xz$-plane and then by 215 degrees in the $yz$-plane, then moving the cube back to its original position.\\
+    \textbf{Note:} I didn't actually solve this one, because the matrix ended up being Too Long For The Wolfram Alpha Textbox\footnote{a technical term in the field of mathematics.}, and my Mathematica installation was having a bad problem and not going to space today.
+    \begin{align*}
+        215\degree = \frac{43 \pi}{32} radians \\
+        \begin{bmatrix}
+            1 & 0 & 0 & -5  \\
+            0 & 1 & 0 & -15 \\
+            0 & 0 & 1 & -10 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        &\times \\
+        \begin{bmatrix}
+            \cos(\frac{\pi}{4})  & 0 & \sin(\frac{\pi}{4}) & 0 \\
+            0                    & 1 & 0                   & 0 \\
+            -\sin(\frac{\pi}{4}) & 0 & \cos(\frac{\pi}{4}) & 0 \\
+            0                    & 0 & 0                   & 1
+        \end{bmatrix}
+        &\times \\
+        \begin{bmatrix}
+            1 & 0                       & 0                        & 0 \\
+            0 & \cos(\frac{43 \pi}{32}) & -\sin(\frac{43 \pi}{32}) & 0 \\
+            0 & \sin(\frac{43 \pi}{32}) & \cos(\frac{43 \pi}{32})  & 0 \\
+            0 & 0                       & 0                        & 1
+        \end{bmatrix}
+        &\times \\
+        \begin{bmatrix}
+            1 & 0 & 0 & 5  \\
+            0 & 1 & 0 & 15 \\
+            0 & 0 & 1 & 10 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \end{align*}
+    \item Rotate a 3D cube initially located with a center at $(50, 20, 18)$ by $\frac{5\pi}{6}$ radians about the vector $\begin{bsmallmatrix}
+    1\\-3\\2
+    \end{bsmallmatrix}$, then moving the cube back into its original position.\\
+    \textbf{Note 1:} It was stated in class that it was not necessary to know how to do this. \\
+    \textbf{Note 2:} Once again, the textual representation of the matrices involved in this operation are Too Long For The Wolfram Alpha Textbox, so I have chosen not to provide a solution to this whole mess.
+    \begin{align*}
+        &\begin{bmatrix}
+            1 & 0 & 0 & -50 \\
+            0 & 1 & 0 & -20 \\
+            0 & 0 & 1 & -18 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \times \\
+        &\begin{bmatrix}
+            \cos(\frac{5\pi}{6}) &
+            -3 + 3\cos(\frac{5\pi}{6}) + 3\sin(\frac{5\pi}{6}) &
+            2 - 2\cos(\frac{5\pi}{6}) + 2\sin(\frac{5\pi}{6}) &
+            0 \\
+            -3 + 3\cos(\frac{5\pi}{6}) - 3\sin(\frac{5\pi}{6}) &
+            \cos(\frac{5\pi}{6}) &
+            -6 +6\cos(\frac{5\pi}{6}) + \sin(\frac{5\pi}{6})  &
+            0 \\
+            2 - 2\cos(\frac{5\pi}{6}) + 3\sin(\frac{5\pi}{6})  &
+            -6 + 6\cos(\frac{5\pi}{6}) - \sin(\frac{5\pi}{6})  &
+            \cos(\frac{5\pi}{6})                            &
+            0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+        \times \\
+        &\begin{bmatrix}
+            1 & 0 & 0 & 50 \\
+            0 & 1 & 0 & 20 \\
+            0 & 0 & 1 & 18 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \end{align*}
+\end{enumerate}
+\end{document}
