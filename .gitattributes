@@ -1,1 +1,2 @@
 lab2/large-benchmark/report/* linguist-documentation 
+*.jar filter=lfs -crlf
