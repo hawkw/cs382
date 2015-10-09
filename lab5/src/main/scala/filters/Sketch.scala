@@ -5,7 +5,8 @@ import PConstants._
 import PApplet._
 
 class Sketch
-extends PApplet {
+extends PApplet
+  with Convolution {
 }
 
 object Sketch
