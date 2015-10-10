@@ -1,5 +1,7 @@
 package filters
 
+import scala.language.postfixOps
+
 trait ImageProcessing {
 
   type Pixel = Int
@@ -10,9 +12,13 @@ trait ImageProcessing {
       = ???
   }
 
-  implicit class Partition(val i: Image) {
-    def partition(x: Int, y: Int): Array[Image]
-      = ???
+  implicit class Partitionable(val x: Image) {
+    def partition(h: Int, w: Int): Array[Image]
+      = (0 until x.length - h) map { q ⇒
+          (q until q + h) map { i ⇒
+            x(i) slice (q, w)
+          } toArray
+        } toArray
   }
 
 }
