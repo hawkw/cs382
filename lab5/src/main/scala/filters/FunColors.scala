@@ -114,7 +114,7 @@ extends FunColors {
       = Some((c.hue, c.saturation, c.value))
 
     def apply(h: Int, s: Int, v: Int): Color
-      = { colorMode(HSV)
+      = { colorMode(HSB)
           color(h, s, v)
         }
   }
