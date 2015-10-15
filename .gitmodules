@@ -5,5 +5,5 @@
 	path = lab2/scala-common
 	url = git@github.com:hawkw/scala-common.git
 [submodule "cs382-f2015-lab4"]
-	path = cs382-f2015-lab4
+	path = lab4/cs382-f2015-lab4
 	url = git@github.com:hawkw/cs382-f2015-lab4.git
