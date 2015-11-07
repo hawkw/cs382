@@ -1,7 +1,5 @@
 PImage image;
-boolean fallingDown = true;
 Tile[] tiles;
-final int N_TILES
 
 void setup() {
   image = loadImage("lunar.jpg");
