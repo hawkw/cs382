@@ -11,10 +11,10 @@
  * @param max the maximum value for the random number.
  * @return a random number between <code>min</code> and <code>max</code>.
  */
-float rand_not(float not, float min, float max) {
-  float result = not;
+int rand_not(int not, float min, float max) {
+  int result = not;
   while (result == not)
-    result = random(min, max);
+    result = (int)random(min, max);
   return result;
 }
 
@@ -43,8 +43,8 @@ class Tile {
     this.image   = image;
     this.x       = x;
     this.y       = y;
-    this.x_pos   = (int)rand_not(x, 0, width);
-    this.y_pos   = (int)rand_not(y, 0, height);
+    this.x_pos   = rand_not(x, 0, width);
+    this.y_pos   = rand_not(y, 0, height);
     this.x_start = x_pos;
   }
 
