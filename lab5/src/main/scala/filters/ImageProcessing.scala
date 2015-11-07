@@ -2,14 +2,16 @@ package filters
 
 import scala.language.postfixOps
 
-trait ImageProcessing {
+trait ImageProcessing
+extends FunColors {
 
-  type Pixel = Int
-  type Image = Array[Array[Pixel]]
+  type Image = Array[Array[Color]]
 
-  implicit class PixelsToImage(val ps: Array[Pixel]) {
+  implicit class PixelsToImage(val ps: Array[Color]) {
     def toImage: Image
-      = ???
+      = { val result = Array.ofDim[Color]()
+
+      }
   }
 
   implicit class Partitionable(val x: Image) {

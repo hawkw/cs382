@@ -21,27 +21,26 @@ import PApplet._
  */
 trait FunColors
 extends PApplet {
-
   implicit class Color(val c: Int) {
     // -- RGB accessors ------------
-    def red: Int
-      = red c
+    def red: Float
+      = FunColors.this.red(c)
 
-    def green: Int
-      = green c
+    def green: Float
+      = FunColors.this.green(c)
 
-    def blue: Int
-      = blue c
+    def blue: Float
+      = FunColors.this.blue(c)
 
     // -- HSV accessors ------------
-    def hue: Int
-      = hue c
+    def hue: Float
+      = FunColors.this.hue(c)
 
-    def saturation: Int
-      = saturation c
+    def saturation: Float
+      = FunColors.this.saturation(c)
 
-    def value: Int
-      = value c
+    def value: Float
+      = FunColors.this.brightness(c)
 
     // -- RGB mutators -------------
     def red_=(r: Int): Color
@@ -96,10 +95,10 @@ trait FunRGBColors
 extends FunColors {
 
   object Color {
-    def unapply(c: Color): Option[(Int, Int, Int)]
+    def unapply(c: Color): Option[(Float,Float,Float)]
       = Some((c.red, c.blue, c.green))
 
-    def apply(red: Int, blue: Int, green: Int): Color
+    def apply(red: Float, blue: Float, green: Float): Color
       = { colorMode(RGB)
           color(red, green, blue)
         }
@@ -110,7 +109,7 @@ trait FunHSVColors
 extends FunColors {
 
   object Color {
-    def unapply(c: Color): Option[(Int, Int, Int)]
+    def unapply(c: Color): Option[(Float,Float,Float)]
       = Some((c.hue, c.saturation, c.value))
 
     def apply(h: Int, s: Int, v: Int): Color
