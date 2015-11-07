@@ -2,7 +2,7 @@ PImage image;
 Tile[] tiles;
 
 void setup() {
-  image = loadImage("lunar.jpg");
+  image = loadImage("../data/lunar.jpg");
   size(480,240);
   // we can calculate the number of tiles needed based on the image dimensions
   tiles = new Tile[ width/20 * height/20 ];
