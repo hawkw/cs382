@@ -11,7 +11,7 @@ void setup() {
     if (h == 0) {
       // I thought the red color made the text a little hard to read
       // so I desaturated it a bit.
-      img.pixels[i] = color(h
+      img.pixels[i] = color( h
                            , saturation(pixel) * 0.6
                            , brightness(pixel)
                            );
@@ -21,7 +21,7 @@ void setup() {
       // Otherwise, desaturate it just a little so that the red
       // doesn't look jarringly less saturated than the other colors.
       img.pixels[i] = color( h
-                           , saturation(pixel) * 0.8
+                           , saturation(pixel) * 0.75
                            , brightness(pixel)
                            );
     }
